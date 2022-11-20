@@ -28,19 +28,26 @@ class Sticker(db.Model):
   file_id = db.Column(db.String(64))
   file_unique_id = db.Column(db.String(32))
   pack_id = db.Column(db.Integer, db.ForeignKey('sticker_pack.id'), nullable=False)
-  attributions = db.relationship('Attribution', secondary=attribution_links, lazy='subquery',
-        backref=db.backref('sticker', lazy=True))
+  attributions = db.relationship('Attribution', backref= 'sticker', lazy=True)
   created_at = db.Column(db.DateTime, server_default=db.func.now())
   updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
 class Attribution(db.Model):
   id = db.Column(db.Integer, primary_key=True)
+  sticker_id = db.Column(db.Integer, db.ForeignKey('sticker.id'), nullable=False)
+  person_id = db.Column(db.Integer, db.ForeignKey('attribution_person.id'), nullable=False)
+  label_id = db.Column(db.Integer, db.ForeignKey('attribution_label.id'), nullable=False)
+
+class AttributionPerson(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(64))
   link = db.Column(db.String(255))
   user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-  label_id = db.Column(db.Integer, db.ForeignKey('attribution_label.id'), nullable=False)
+  attributions = db.relationship('Attribution', backref= 'attribution_person', lazy=True)
+
 
 class AttributionLabel(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   label = db.Column(db.String(64))
+  attributions = db.relationship('Attribution', backref= 'attribution_label', lazy=True)
 
