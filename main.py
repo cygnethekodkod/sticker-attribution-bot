@@ -1,4 +1,5 @@
 import os
+# import qrcode
 
 from app import app
 

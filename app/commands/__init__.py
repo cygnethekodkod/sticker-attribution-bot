@@ -5,3 +5,5 @@ from .polo import polo
 from .start import start
 from .unknown import unknown
 from .version import version
+from .qtsticks import qtsticks
+from .readqr import readqr
