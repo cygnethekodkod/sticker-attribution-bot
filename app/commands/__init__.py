@@ -10,3 +10,5 @@ from .sticker import sticker
 from .text import text
 from .unknown import unknown
 from .version import version
+from .qtsticks import qtsticks
+from .readqr import readqr

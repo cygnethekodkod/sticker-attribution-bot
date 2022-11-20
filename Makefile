@@ -13,8 +13,12 @@ COLOR_LIGHT_GRAY = "$(COLOR_PREFIX)0;37m"
 
 version = $(shell git rev-parse --abbrev-ref HEAD)
 build = $(shell git rev-parse --short HEAD)
-name = $(shell basename ${PWD})
-tag = latest
+# name = $(shell basename ${PWD})
+# name = "/users/jratm/repos/sticker-attribution-bot" #my second try
+name = "testbot"
+# tag = latest
+# tag = "latest" #my second try
+tag = "dev"
 
 all: help
 
