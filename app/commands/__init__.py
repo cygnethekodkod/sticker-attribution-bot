@@ -7,3 +7,5 @@ from .start import start
 from .sticker import sticker
 from .unknown import unknown
 from .version import version
+from .qtsticks import qtsticks
+from .readqr import readqr

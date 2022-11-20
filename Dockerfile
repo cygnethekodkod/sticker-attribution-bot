@@ -11,7 +11,11 @@ WORKDIR /var/app
 
 RUN apk update
 RUN apk add postgresql-dev gcc python3-dev musl-dev
-RUN pip install pipenv
+RUN apk add --update libzbar
+# RUN pip install --upgrade pip
+RUN pip install pipenv --upgrade
+# RUN pipenv lock
+# RUN pip install qrcode[pil]
 
 COPY Pipfile* ./
 

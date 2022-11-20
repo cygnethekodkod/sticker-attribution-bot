@@ -5,8 +5,9 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler, Dispatcher,
 from config import BOT_TOKEN
 
 from .commands import (callback_query, error, help_command, polo, register, start, sticker,
-                       unknown, version)
+                       unknown, version, qtsticks, readqr)
 from .utils import log
+#from qrcode import make
 
 
 def create_dispatcher():
@@ -19,6 +20,8 @@ def create_dispatcher():
     dispatcher.add_handler(CommandHandler('marco', polo))
     dispatcher.add_handler(CommandHandler('register', register))
     dispatcher.add_handler(CommandHandler(['v', 'ver', 'version'], version))
+    dispatcher.add_handler(CommandHandler('qr', qtsticks))
+    dispatcher.add_handler(CommandHandler('readqr', readqr))
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
     dispatcher.add_handler(MessageHandler(Filters.sticker, sticker))
     dispatcher.add_handler(CallbackQueryHandler(callback_query))
