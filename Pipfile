@@ -12,6 +12,11 @@ psycopg2 = "*"
 requests = "*"
 sqlalchemy-utils = "*"
 flask-migrate = "*"
+qrcode = "*"
+pillow = "*"
+pyzbar = "*"
+# os = "*"
+
 
 [dev-packages]
 pylint = "*"
