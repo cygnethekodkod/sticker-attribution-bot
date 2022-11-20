@@ -4,7 +4,7 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler, Dispatcher,
 
 from config import BOT_TOKEN
 
-from .commands import (callback_query, error, help_command, polo, start,
+from .commands import (callback_query, error, help_command, polo, register, start, sticker,
                        unknown, version)
 from .utils import log
 
@@ -17,8 +17,10 @@ def create_dispatcher():
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler(['h', 'help'], help_command))
     dispatcher.add_handler(CommandHandler('marco', polo))
+    dispatcher.add_handler(CommandHandler('register', register))
     dispatcher.add_handler(CommandHandler(['v', 'ver', 'version'], version))
     dispatcher.add_handler(MessageHandler(Filters.command, unknown))
+    dispatcher.add_handler(MessageHandler(Filters.sticker, sticker))
     dispatcher.add_handler(CallbackQueryHandler(callback_query))
     dispatcher.add_error_handler(error)
 
